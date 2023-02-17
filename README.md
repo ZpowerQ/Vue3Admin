@@ -23,7 +23,8 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+###效果图：
+![image](https://github.com/ZpowerQ/Vue3Admin/blob/main/image/1.png)
+![image](https://github.com/ZpowerQ/Vue3Admin/blob/main/image/2.png)
+![image](https://github.com/ZpowerQ/Vue3Admin/blob/main/image/3.png)
+![image](https://github.com/ZpowerQ/Vue3Admin/blob/main/image/4.png)

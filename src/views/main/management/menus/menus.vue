@@ -11,7 +11,7 @@
         v-bind="tableConfig"
         :listdate="menus"
         @refresh="handleRefresh"
-        @addevent="handleAddEvent"
+        @addevent="deletewarn"
         @delmoreevent="deletewarn"
       >
         <template #menuicon="scope">

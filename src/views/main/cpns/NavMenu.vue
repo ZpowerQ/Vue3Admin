@@ -56,11 +56,14 @@ export default defineComponent({
     let isCollapse = ref(false)
     let activeMenu = ref<string>('1-1')
     //获取菜单
-    const menus = LocalCache.getCache('userMenus') ?? []
+    const menus = ref([])
+
+    menus.value = LocalCache.getCache('userMenus') ?? []
+
     //处理路径和菜单元素激活的映射
     const mapRouteToMenu = (url: string) => {
-      for (const item of menus) {
-        for (const m of item.children) {
+      for (const item of menus.value) {
+        for (const m of (item as any).children) {
           if (url === m.url) activeMenu.value = m.index
         }
       }

@@ -1,6 +1,12 @@
 <template>
   <div class="erDialog">
-    <el-dialog v-model="dialogVisible" :title="title" width="30%" center>
+    <el-dialog
+      v-model="dialogVisible"
+      :title="title"
+      width="30%"
+      center
+      draggable
+    >
       <slot></slot>
       <template #footer>
         <span class="dialog-footer">

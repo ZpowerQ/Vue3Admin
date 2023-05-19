@@ -48,6 +48,7 @@ const loginState: Module<LoginState, RootState> = {
           message: '账号不存在',
           duration: 1500
         })
+        return
       } else {
         LocalCache.setCache('token', data?.token)
         LocalCache.setCache('id', data?.id)
@@ -55,7 +56,7 @@ const loginState: Module<LoginState, RootState> = {
           message: '登录成功',
           duration: 1500
         })
-        router.replace('/main')
+
         LocalCache.setCache('token', data?.token)
         LocalCache.setCache('id', data?.id)
       }
@@ -66,7 +67,8 @@ const loginState: Module<LoginState, RootState> = {
       const userMenus = await getUserMenus(data?.id)
       LocalCache.setCache('userMenus', userMenus.data?.data)
       // 设置vuex
-      dispatch('loadLocalCache')
+      await dispatch('loadLocalCache')
+      router.replace('/main')
     },
     loadLocalCache({ commit }) {
       const token = LocalCache.getCache('token')

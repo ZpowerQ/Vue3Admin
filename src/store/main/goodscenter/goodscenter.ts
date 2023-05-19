@@ -6,28 +6,38 @@ import { ElMessage } from 'element-plus'
 import {
   getPageListDate,
   addPageDate,
-  deleteData
+  deleteData,
+  getGoodCategoryData
 } from '@/service/main/management/management'
 const goodsState: Module<goodState, RootState> = {
   namespaced: true,
   state() {
     return {
       goodlist: [],
-      goodCount: 0
+      goodCount: 0,
+      goodCategory: []
     }
   },
   mutations: {
     setGoodlist(state, payload) {
       state.goodlist = payload[0]
       state.goodCount = payload[1]
+    },
+    setGoodCategory(state, payload) {
+      state.goodCategory = payload
     }
   },
   actions: {
     async getPageList({ commit }, payload: any) {
-      const listdate = await getPageListDate(payload)
+      let listdate = null
       switch (payload?.pageName) {
         case 'good':
+          listdate = await getPageListDate(payload)
           commit('setGoodlist', listdate?.data.data)
+          break
+        case 'good_category':
+          listdate = await getGoodCategoryData()
+          commit('setGoodCategory', listdate.data)
           break
       }
     },

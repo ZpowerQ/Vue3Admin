@@ -26,3 +26,9 @@ export function deleteData(payload?: any) {
     url: payload.url
   })
 }
+
+export function getGoodCategoryData() {
+  return erRequest.get({
+    url: '/good_category/getAll'
+  })
+}
